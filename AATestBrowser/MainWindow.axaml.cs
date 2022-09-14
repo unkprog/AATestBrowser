@@ -9,7 +9,8 @@ namespace AATestBrowser
         {
             InitializeComponent();
             browserApp = this.FindControl<AvaloniaCefBrowser>("browserApp");
-            browserApp.Address = "file:///C:/temp/spinner.html";
+            
+            browserApp.Address = string.Concat( "file:///", System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location), "/spinner.html");
         }
     }
 }
