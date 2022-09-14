@@ -1,0 +1,132 @@
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <title>CodePen Demo</title>
+ 
+  
+
+  <style>
+	body {
+	margin: 0;
+	}
+
+.loader1
+{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.loader {
+    width: 15em;
+    height: 15em;
+    font-size: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+    border-color: currentColor transparent transparent currentColor;
+    border-width: 0.2em 0.2em 0em 0em;
+}
+
+.loader .face:nth-child(1) {
+    color: lime;
+    animation:animate1 3s linear infinite;
+}
+
+.loader .face:nth-child(2) {
+    color: yellow;
+    animation:animate2 3s linear infinite;
+}
+
+.loader .face:nth-child(3) {
+    color: red;
+    animation:animate3 3s linear infinite;
+}
+
+.loader .face .circle {
+	position: absolute;
+    background-color: transparent;
+    width: 50%;
+    height: 0.05em;
+	top: 15%;
+    left: 34%;
+}
+
+.loader .face .circle::before {
+    position: absolute;
+    content: '';
+    background-color: currentColor;
+    top: -0.5em;
+    right: -0.5em;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+}
+
+.loader .face:nth-child(1) .circle::before {
+    box-shadow: 0 0 1em, 0 0 2em, 0 0 3em, 0 0 4em, 0 0 5em, 0 0 0 0.5em rgba(0, 255, 0, 0.1);
+}
+
+.loader .face:nth-child(2) .circle::before {
+    box-shadow: 0 0 1em, 0 0 2em, 0 0 3em, 0 0 4em, 0 0 5em, 0 0 0 0.5em rgba(255, 255, 0, 0.1);
+}
+
+.loader .face:nth-child(3) .circle::before {
+    box-shadow: 0 0 1em, 0 0 2em, 0 0 3em, 0 0 4em, 0 0 5em, 0 0 0 0.5em rgba(255, 0, 0, 0.1);
+}
+@keyframes animate1
+{
+  0% { transform:rotate(0deg); } 100% { transform:rotate(360deg); }
+}
+
+@keyframes animate2
+{
+  0% { transform:rotate(120deg); } 100% { transform:rotate(480deg); }
+}
+
+@keyframes animate3
+{
+  0% { transform:rotate(240deg); } 100% { transform:rotate(600deg); }
+}
+
+.loader .text{
+	color: snow;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+	</style>
+</head>
+
+<body>
+    <div class="loader1">
+	<div class="loader">
+		<div class="face">
+			<div class="circle"></div>
+		</div>
+		<div class="face">
+			<div class="circle"></div>
+		</div>
+		<div class="face">
+			<div class="circle"></div>
+		</div>
+	   <span class="text">Загрузка...</span>
+	</div>
+	</div>
+  
+  
+
+
+	</body>
+</html>

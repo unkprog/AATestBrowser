@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Xilium.CefGlue.Avalonia;
 
 namespace AATestBrowser
 {
@@ -7,6 +8,8 @@ namespace AATestBrowser
         public MainWindow()
         {
             InitializeComponent();
+            browserApp = this.FindControl<AvaloniaCefBrowser>("browserApp");
+            browserApp.Address = "file:///C:/temp/spinner.html";
         }
     }
 }

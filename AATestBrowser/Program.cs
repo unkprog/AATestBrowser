@@ -2,6 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using System;
+using Xilium.CefGlue.Common.Shared;
+using Xilium.CefGlue.Common;
+using Xilium.CefGlue;
 
 namespace AATestBrowser
 {
@@ -18,6 +21,18 @@ namespace AATestBrowser
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToTrace();
+                .LogToTrace()
+                .With(new Win32PlatformOptions
+                {
+                    UseWindowsUIComposition = false
+                })
+                      .AfterSetup(_ => CefRuntimeLoader.Initialize(new CefSettings()
+                      {
+#if WINDOWLESS
+                          WindowlessRenderingEnabled = true
+#else
+                          WindowlessRenderingEnabled = false
+#endif
+                      }));
     }
 }
