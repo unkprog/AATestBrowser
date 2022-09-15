@@ -6,7 +6,13 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AATestBrowser.MainWindow"
         Title="AATestBrowser">
-	<cefglue:AvaloniaCefBrowser Name="browserApp">
+	<Grid RowDefinitions="* Auto">
+		<cefglue:AvaloniaCefBrowser Name="browserApp">
 
-	</cefglue:AvaloniaCefBrowser>
+		</cefglue:AvaloniaCefBrowser>
+
+		<Button Grid.Row="1" Click="clickStart">
+			Старт
+		</Button>
+	</Grid>
 </Window>

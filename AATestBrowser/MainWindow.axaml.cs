@@ -1,4 +1,6 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
+using System;
 using Xilium.CefGlue.Avalonia;
 
 namespace AATestBrowser
@@ -11,6 +13,13 @@ namespace AATestBrowser
             browserApp = this.FindControl<AvaloniaCefBrowser>("browserApp");
             
             browserApp.Address = string.Concat( "file:///", System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location), "/spinner.html");
+        }
+
+
+        private void clickStart(object? sender, RoutedEventArgs args)
+        {
+            WATestBrowserHelper.StartAsync(Array.Empty<string>());
+            browserApp.Address = string.Concat("https://localhost:5001/weatherforecast");
         }
     }
 }

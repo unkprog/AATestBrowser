@@ -26,6 +26,9 @@
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WATestBrowser\WATestBrowser.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="spinner.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
