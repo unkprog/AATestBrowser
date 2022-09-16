@@ -18,6 +18,8 @@ namespace AATestBrowser
 
         private void clickStart(object? sender, RoutedEventArgs args)
         {
+            Window w = new WindowLogger();
+            w.Show();
             WATestBrowserHelper.StartAsync(Array.Empty<string>());
             browserApp.Address = string.Concat("https://localhost:5001/weatherforecast");
         }

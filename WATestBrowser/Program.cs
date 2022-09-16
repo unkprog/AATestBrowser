@@ -1,29 +1,43 @@
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using WATestBrowser;
+
 public class Program
 {
     private static void Main(string[] args)
     {
-        WATestBrowserHelper.Start(args);
+        WATestBrowserHelper.StartAsync(args);
     }
 }
 
 public static class WATestBrowserHelper
 {
+    //public static void StartAsync(string[] args)
+    //{
+    //    Task.Run(() => Start(args));
+    //}
+        
     public static void StartAsync(string[] args)
     {
-        Task.Run(() => Start(args));
-    }
-        
-    public static void Start(string[] args)
-    {
+        //var builder = WebHost.CreateDefaultBuilder(args);
         var builder = WebApplication.CreateBuilder(args);
+        //builder.UseKestrel(so =>
+        //{
+        //    so.Limits.MaxConcurrentConnections = 100;
+        //    so.Limits.MaxConcurrentUpgradedConnections = 100;
+        //    so.Limits.MaxRequestBodySize = 52428800;
+        //});
+        builder.Logging.AddServerLogger(options => { });
+
+        var startup = new WATestBrowser.Startup(builder.Configuration);
+        startup.ConfigureServices(builder.Services);
 
         // Add services to the container.
-
         var app = builder.Build();
-
         // Configure the HTTP request pipeline.
-
-        app.UseHttpsRedirection();
+        startup.Configure(app, builder.Environment);
+        //app.UseHttpsRedirection();
+        
 
         var summaries = new[]
         {
@@ -43,7 +57,7 @@ public static class WATestBrowserHelper
             return forecast;
         });
 
-        app.Run();
+        app.RunAsync();
     }
 }
 

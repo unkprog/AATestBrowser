@@ -5,6 +5,7 @@ using System;
 using Xilium.CefGlue.Common.Shared;
 using Xilium.CefGlue.Common;
 using Xilium.CefGlue;
+using Avalonia.ReactiveUI;
 
 namespace AATestBrowser
 {
@@ -20,6 +21,7 @@ namespace AATestBrowser
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
+                .UseReactiveUI()
                 .UsePlatformDetect()
                 .LogToTrace()
                 .With(new Win32PlatformOptions
